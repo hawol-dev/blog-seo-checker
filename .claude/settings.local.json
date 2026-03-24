@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash 'C:\\\\Users\\\\swoom\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\5.0.5\\\\scripts\\\\start-server.sh' --project-dir 'C:\\\\Users\\\\swoom\\\\Desktop\\\\dev\\\\blog-seo-checker')",
+      "Bash(bash 'C:/Users/swoom/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.5/skills/brainstorming/scripts/start-server.sh' --project-dir 'C:/Users/swoom/Desktop/dev/blog-seo-checker')",
+      "WebSearch",
+      "Bash(mkdir -p /tmp/blog-seo-backup)",
+      "Bash(cp -r docs /tmp/blog-seo-backup/)",
+      "Bash(cp -r .superpowers /tmp/blog-seo-backup/)",
+      "Bash(cp -r .claude /tmp/blog-seo-backup/)",
+      "Bash(cp 2026-03-side-project-brainstorm.md /tmp/blog-seo-backup/)",
+      "Bash(npx shadcn@latest init -d --style new-york --base-color neutral --css-variables)",
+      "Bash(npx shadcn@latest init --help)",
+      "Bash(npx shadcn@latest init -d --css-variables -y)"
+    ]
+  }
+}
