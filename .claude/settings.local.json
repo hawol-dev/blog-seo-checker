@@ -11,7 +11,14 @@
       "Bash(cp 2026-03-side-project-brainstorm.md /tmp/blog-seo-backup/)",
       "Bash(npx shadcn@latest init -d --style new-york --base-color neutral --css-variables)",
       "Bash(npx shadcn@latest init --help)",
-      "Bash(npx shadcn@latest init -d --css-variables -y)"
+      "Bash(npx shadcn@latest init -d --css-variables -y)",
+      "Bash(npx shadcn@latest add input textarea badge -y)",
+      "Bash(npm install:*)",
+      "Bash(cd:*)",
+      "Bash(for dir:*)",
+      "Bash(do touch:*)",
+      "Bash(done)",
+      "Bash(timeout 15 npx next dev --port 3099)"
     ]
   }
 }
