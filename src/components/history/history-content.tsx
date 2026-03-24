@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import { getHistory, getAnalysis } from '@/actions/history';
 import type { HistoryItem } from '@/actions/history';
 import { HistoryList } from '@/components/history/history-list';
@@ -66,6 +67,30 @@ export function HistoryContent() {
           >
             다시 시도
           </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (items.length === 0) {
+    return (
+      <div className="flex flex-1 items-center justify-center">
+        <div className="flex flex-col items-center gap-3 text-center">
+          <span className="text-[40px] leading-none opacity-60" aria-hidden="true">
+            📋
+          </span>
+          <p className="text-[14px] text-text-muted">
+            아직 분석 히스토리가 없어요
+          </p>
+          <p className="text-[12px] text-text-muted/70">
+            새 분석을 실행하면 여기에 기록돼요
+          </p>
+          <Link
+            href="/"
+            className="mt-2 inline-flex items-center gap-1 px-4 py-2 rounded-lg bg-accent/15 text-accent text-[13px] font-medium hover:bg-accent/25 transition-colors"
+          >
+            첫 분석 시작하기 →
+          </Link>
         </div>
       </div>
     );

@@ -78,9 +78,16 @@ export function InputPanel() {
       <Button
         onClick={analyze}
         disabled={isDisabled || isLoading}
-        className="w-full h-11 text-sm font-bold bg-gradient-to-br from-accent-dim to-accent text-white border-none hover:shadow-[0_0_20px_rgba(155,124,250,0.3)] hover:-translate-y-px transition-all disabled:opacity-40 disabled:hover:shadow-none disabled:hover:translate-y-0"
+        className="w-full h-11 text-sm font-bold bg-gradient-to-br from-accent-dim to-accent text-white border-none hover:shadow-[0_0_20px_rgba(155,124,250,0.3)] hover:-translate-y-px transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none disabled:hover:translate-y-0"
       >
-        {isLoading ? '분석 중...' : '네이버 SEO 분석하기'}
+        {isLoading ? (
+          <span className="flex items-center justify-center gap-2">
+            <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            분석 중...
+          </span>
+        ) : (
+          '네이버 SEO 분석하기'
+        )}
       </Button>
     </div>
   );
