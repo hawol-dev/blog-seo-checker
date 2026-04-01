@@ -87,7 +87,8 @@ function checkKeywordDensity(content: string, keyword: string): CheckResult {
   }
 
   const occurrences = countOccurrences(content, keyword);
-  const density = (occurrences / content.length) * 100;
+  const wordCount = content.split(/\s+/).filter(Boolean).length;
+  const density = wordCount > 0 ? (occurrences / wordCount) * 100 : 0;
 
   if (density >= DENSITY_MIN_PERCENT && density <= DENSITY_MAX_PERCENT) {
     return {

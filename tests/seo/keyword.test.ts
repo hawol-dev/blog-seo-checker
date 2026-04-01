@@ -21,13 +21,16 @@ describe('keyword checker', () => {
   });
 
   it('gives 8/8 for 1-3% keyword density', () => {
-    const content = '제주도 맛집 추천 정보입니다. '.repeat(10) + '가'.repeat(200);
+    // keyword appears 2 times, filler words fill up ~100 total words → density ≈ 2%
+    const filler = '오늘 날씨가 정말 좋네요 '.repeat(23); // 5 words × 23 = 115 words
+    const content = `제주도 맛집 추천 여행을 떠나볼까요. ${filler} 제주도 맛집 추천 목록을 정리했어요.`;
     const result = checkKeyword({ ...base, content });
     expect(result.find(c => c.name === '키워드 밀도')?.status).toBe('pass');
   });
 
   it('warns for density over 3%', () => {
-    const content = '제주도 맛집 추천 '.repeat(50);
+    // keyword 3 times, filler only 7 words total → density ≈ 30%, well over 3%
+    const content = '제주도 맛집 추천 제주도 맛집 추천 여기 제주도 맛집 추천';
     const result = checkKeyword({ ...base, content });
     expect(result.find(c => c.name === '키워드 밀도')?.status).not.toBe('pass');
   });
