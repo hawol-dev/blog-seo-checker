@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { ScoreRing } from '@/components/analyze/score-ring';
 import { CheckItem } from '@/components/analyze/check-item';
+import { SectionDivider } from '@/components/ui/section-divider';
+import { groupChecks } from '@/lib/seo/group-checks';
 import type { Grade, CheckResult } from '@/lib/seo/types';
 
 export interface FullAnalysis {
@@ -28,34 +30,6 @@ interface HistoryDetailProps {
 function formatDate(dateStr: string) {
   const date = new Date(dateStr);
   return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
-}
-
-function groupChecks(checks: CheckResult[]) {
-  const errors: CheckResult[] = [];
-  const warns: CheckResult[] = [];
-  const passes: CheckResult[] = [];
-
-  for (const check of checks) {
-    if (check.status === 'error') errors.push(check);
-    else if (check.status === 'warn') warns.push(check);
-    else passes.push(check);
-  }
-
-  return { errors, warns, passes };
-}
-
-function SectionDivider({ color, label, count }: { color: string; label: string; count?: number }) {
-  return (
-    <div className="flex items-center gap-2 py-1">
-      <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color }} />
-      <span className="text-[12px] font-medium text-text-secondary">
-        {label}
-        {count != null && (
-          <span className="text-text-muted ml-1">({count})</span>
-        )}
-      </span>
-    </div>
-  );
 }
 
 export function HistoryDetail({ analysis }: HistoryDetailProps) {
