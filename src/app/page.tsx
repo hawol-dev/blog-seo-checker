@@ -6,8 +6,8 @@ export default function AnalyzePage() {
   return (
     <>
       <Header />
-      <main className="flex flex-1 min-h-0 p-3 gap-3">
-        <div className="w-[44%] shrink-0">
+      <main className="flex flex-col md:flex-row flex-1 min-h-0 p-3 gap-3">
+        <div className="w-full md:w-[44%] md:shrink-0">
           <InputPanel />
         </div>
         <ResultPanel />

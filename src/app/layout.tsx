@@ -26,8 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`${jakarta.variable} ${notoSans.variable}`}>
-      <body className="bg-base text-text-primary font-body antialiased h-screen overflow-hidden">
-        <div className="flex flex-col h-screen max-w-[1400px] mx-auto border-x border-border-subtle">
+      <body className="bg-base text-text-primary font-body antialiased min-h-screen md:h-screen md:overflow-hidden">
+        <div className="min-h-screen md:h-full flex flex-col max-w-[1400px] mx-auto border-x border-border-subtle">
           {children}
         </div>
       </body>

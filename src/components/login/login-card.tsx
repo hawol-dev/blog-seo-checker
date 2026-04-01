@@ -38,7 +38,7 @@ export function LoginCard() {
   };
 
   return (
-    <div className="relative z-10 w-[420px] bg-surface rounded-2xl px-10 py-12 border border-border">
+    <div className="relative z-10 w-full max-w-[420px] bg-surface rounded-2xl px-6 py-8 md:px-10 md:py-12 border border-border">
       {/* Logo */}
       <h1 className="font-display font-extrabold text-[32px] tracking-tight text-center">
         Post<span className="text-accent">Kit</span>

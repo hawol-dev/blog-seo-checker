@@ -25,6 +25,7 @@ export interface FullAnalysis {
 
 interface HistoryDetailProps {
   analysis: FullAnalysis | null;
+  onBack?: () => void;
 }
 
 function formatDate(dateStr: string) {
@@ -32,10 +33,10 @@ function formatDate(dateStr: string) {
   return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
 }
 
-export function HistoryDetail({ analysis }: HistoryDetailProps) {
+export function HistoryDetail({ analysis, onBack }: HistoryDetailProps) {
   if (!analysis) {
     return (
-      <div className="w-1/2 bg-base rounded-xl flex items-center justify-center">
+      <div className="w-full bg-base rounded-xl flex items-center justify-center">
         <p className="text-text-muted text-sm">분석 항목을 선택해주세요</p>
       </div>
     );
@@ -51,7 +52,17 @@ export function HistoryDetail({ analysis }: HistoryDetailProps) {
   );
 
   return (
-    <div className="w-1/2 bg-base rounded-xl p-5 min-h-0 flex flex-col overflow-hidden">
+    <div className="w-full bg-base rounded-xl p-5 min-h-0 flex flex-col overflow-hidden">
+      {/* Mobile back button */}
+      {onBack && (
+        <button
+          type="button"
+          onClick={onBack}
+          className="md:hidden flex items-center gap-1 text-sm text-text-secondary mb-3 hover:text-text-primary transition-colors"
+        >
+          ← 목록으로
+        </button>
+      )}
       {/* Title + meta */}
       <div className="bg-surface rounded-lg p-4 mb-4 shrink-0">
         <h3 className="text-[15px] font-bold text-text-primary mb-1.5 truncate">

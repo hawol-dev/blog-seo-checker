@@ -34,6 +34,13 @@ export function HistoryContent() {
   const handleSelect = useCallback(async (id: string) => {
     if (id === selectedId) return;
 
+    // Empty string means deselect (mobile back navigation)
+    if (!id) {
+      setSelectedId(null);
+      setAnalysis(null);
+      return;
+    }
+
     setSelectedId(id);
     setIsLoadingDetail(true);
     setAnalysis(null);
@@ -98,18 +105,22 @@ export function HistoryContent() {
 
   return (
     <>
-      <HistoryList
-        items={items}
-        selectedId={selectedId}
-        onSelect={handleSelect}
-      />
-      {isLoadingDetail ? (
-        <div className="w-1/2 bg-base rounded-xl flex items-center justify-center">
-          <p className="text-text-muted text-sm">분석 결과를 불러오는 중...</p>
-        </div>
-      ) : (
-        <HistoryDetail analysis={analysis} />
-      )}
+      <div className={`${selectedId ? 'hidden md:flex' : 'flex'} w-full md:w-1/2`}>
+        <HistoryList
+          items={items}
+          selectedId={selectedId}
+          onSelect={handleSelect}
+        />
+      </div>
+      <div className={`${selectedId ? 'flex' : 'hidden md:flex'} w-full md:w-1/2`}>
+        {isLoadingDetail ? (
+          <div className="w-full bg-base rounded-xl flex items-center justify-center">
+            <p className="text-text-muted text-sm">분석 결과를 불러오는 중...</p>
+          </div>
+        ) : (
+          <HistoryDetail analysis={analysis} onBack={() => handleSelect('')} />
+        )}
+      </div>
     </>
   );
 }

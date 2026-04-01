@@ -82,7 +82,7 @@ export function HistoryList({ items, selectedId, onSelect }: HistoryListProps) {
   ];
 
   return (
-    <div className="w-1/2 bg-base rounded-xl flex flex-col min-h-0">
+    <div className="w-full bg-base rounded-xl flex flex-col min-h-0">
       {/* Header */}
       <div className="p-4 pb-3 shrink-0">
         <div className="flex items-baseline gap-2 mb-3">
