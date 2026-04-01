@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
 import { LoginCard } from '@/components/login/login-card';
+
+export const metadata: Metadata = {
+  title: '로그인 — PostKit',
+  description: '네이버 또는 카카오 계정으로 PostKit에 로그인하세요.',
+};
 
 export const dynamic = 'force-dynamic';
 

@@ -17,6 +17,12 @@ const notoSans = Noto_Sans_KR({
 export const metadata: Metadata = {
   title: 'PostKit — 네이버 블로그 SEO 분석기',
   description: '네이버 블로그 글의 SEO 점수를 분석하고 상위노출 가이드를 제공합니다.',
+  openGraph: {
+    title: 'PostKit — 네이버 블로그 SEO 분석기',
+    description: '네이버 블로그 글의 SEO 점수를 분석하고 상위노출 가이드를 제공합니다.',
+    type: 'website',
+    locale: 'ko_KR',
+  },
 };
 
 export default function RootLayout({

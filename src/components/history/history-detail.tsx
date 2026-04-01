@@ -6,6 +6,7 @@ import { CheckItem } from '@/components/analyze/check-item';
 import { SectionDivider } from '@/components/ui/section-divider';
 import { groupChecks } from '@/lib/seo/group-checks';
 import type { Grade, CheckResult } from '@/lib/seo/types';
+import { STATUS_COLORS } from '@/lib/constants/colors';
 
 export interface FullAnalysis {
   id: string;
@@ -93,7 +94,7 @@ export function HistoryDetail({ analysis, onBack }: HistoryDetailProps) {
       <div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-2">
         {errors.length > 0 && (
           <>
-            <SectionDivider color="#f87171" label="수정 필요" />
+            <SectionDivider color={STATUS_COLORS.error} label="수정 필요" />
             {errors.map((check) => (
               <CheckItem key={check.name} check={check} />
             ))}
@@ -102,7 +103,7 @@ export function HistoryDetail({ analysis, onBack }: HistoryDetailProps) {
 
         {warns.length > 0 && (
           <>
-            <SectionDivider color="#fbbf24" label="개선 추천" />
+            <SectionDivider color={STATUS_COLORS.warn} label="개선 추천" />
             {warns.map((check) => (
               <CheckItem key={check.name} check={check} />
             ))}
@@ -111,7 +112,7 @@ export function HistoryDetail({ analysis, onBack }: HistoryDetailProps) {
 
         {passes.length > 0 && (
           <>
-            <SectionDivider color="#34d399" label="통과" count={passedCount} />
+            <SectionDivider color={STATUS_COLORS.pass} label="통과" count={passedCount} />
             {passes.map((check) => (
               <CheckItem key={check.name} check={check} />
             ))}

@@ -1,5 +1,6 @@
 'use client';
 
+import { useShallow } from 'zustand/react/shallow';
 import { useAnalyzeStore } from '@/stores/analyze-store';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -7,13 +8,17 @@ import { Button } from '@/components/ui/button';
 import { MetaCards } from '@/components/analyze/meta-cards';
 
 export function InputPanel() {
-  const title = useAnalyzeStore((s) => s.title);
-  const keyword = useAnalyzeStore((s) => s.keyword);
-  const content = useAnalyzeStore((s) => s.content);
-  const isLoading = useAnalyzeStore((s) => s.isLoading);
-  const error = useAnalyzeStore((s) => s.error);
-  const setField = useAnalyzeStore((s) => s.setField);
-  const analyze = useAnalyzeStore((s) => s.analyze);
+  const { title, keyword, content, isLoading, error, setField, analyze } = useAnalyzeStore(
+    useShallow((s) => ({
+      title: s.title,
+      keyword: s.keyword,
+      content: s.content,
+      isLoading: s.isLoading,
+      error: s.error,
+      setField: s.setField,
+      analyze: s.analyze,
+    }))
+  );
 
   const isDisabled = !title.trim() || !keyword.trim() || !content.trim();
 

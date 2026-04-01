@@ -48,7 +48,7 @@ function MetaCard({ label, field, colorClass }: MetaCardProps) {
           type="button"
           onClick={decrement}
           disabled={value <= 0}
-          className="w-5 h-5 flex items-center justify-center rounded text-text-muted hover:text-text-secondary hover:bg-surface transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-xs"
+          className="w-8 h-8 flex items-center justify-center rounded text-text-muted hover:text-text-secondary hover:bg-surface transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-xs"
           aria-label={`${label} 감소`}
         >
           -
@@ -56,7 +56,7 @@ function MetaCard({ label, field, colorClass }: MetaCardProps) {
         <button
           type="button"
           onClick={increment}
-          className="w-5 h-5 flex items-center justify-center rounded text-text-muted hover:text-text-secondary hover:bg-surface transition-colors text-xs"
+          className="w-8 h-8 flex items-center justify-center rounded text-text-muted hover:text-text-secondary hover:bg-surface transition-colors text-xs"
           aria-label={`${label} 증가`}
         >
           +

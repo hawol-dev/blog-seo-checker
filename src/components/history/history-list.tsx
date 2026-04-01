@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import type { HistoryItem } from '@/actions/history';
 import type { Grade } from '@/lib/seo/types';
+import { GRADE_COLORS } from '@/lib/constants/colors';
 
 interface HistoryListProps {
   items: HistoryItem[];
@@ -12,14 +13,6 @@ interface HistoryListProps {
 
 type FilterTab = 'all' | 'high' | 'low';
 
-const GRADE_COLORS: Record<string, string> = {
-  S: '#9b7cfa',
-  A: '#34d399',
-  B: '#60a5fa',
-  C: '#fbbf24',
-  D: '#f87171',
-};
-
 function formatDate(dateStr: string) {
   const date = new Date(dateStr);
   const month = date.getMonth() + 1;
@@ -28,7 +21,7 @@ function formatDate(dateStr: string) {
 }
 
 function GradeBadge({ grade }: { grade: string }) {
-  const color = GRADE_COLORS[grade] ?? '#555566';
+  const color = GRADE_COLORS[grade as Grade] ?? '#555566';
   return (
     <span
       className="shrink-0 text-[11px] font-bold px-1.5 py-0.5 rounded"
@@ -40,7 +33,7 @@ function GradeBadge({ grade }: { grade: string }) {
 }
 
 function ScoreCircle({ score, grade }: { score: number; grade: string }) {
-  const color = GRADE_COLORS[grade] ?? '#555566';
+  const color = GRADE_COLORS[grade as Grade] ?? '#555566';
   return (
     <div
       className="w-[42px] h-[42px] shrink-0 rounded-full flex items-center justify-center border-2"

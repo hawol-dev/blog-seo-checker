@@ -1,22 +1,15 @@
 'use client';
 
 import type { Grade } from '@/lib/seo/types';
+import { GRADE_COLORS } from '@/lib/constants/colors';
 
 interface ScoreRingProps {
   score: number;
   grade: Grade;
 }
 
-const GRADE_COLORS: Record<Grade, string> = {
-  S: '#34d399',
-  A: '#34d399',
-  B: '#60a5fa',
-  C: '#fbbf24',
-  D: '#f87171',
-};
-
 const GRADE_GLOWS: Record<Grade, string> = {
-  S: 'rgba(52, 211, 153, 0.25)',
+  S: 'rgba(155, 124, 250, 0.25)',
   A: 'rgba(52, 211, 153, 0.25)',
   B: 'rgba(96, 165, 250, 0.25)',
   C: 'rgba(251, 191, 36, 0.25)',
