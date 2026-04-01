@@ -34,13 +34,10 @@ export function ResultPanel() {
   const result = useAnalyzeStore((s) => s.result);
   const isLoading = useAnalyzeStore((s) => s.isLoading);
   const error = useAnalyzeStore((s) => s.error);
-  const [showError, setShowError] = useState(false);
+  const [dismissedError, setDismissedError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (error) setShowError(true);
-  }, [error]);
-
-  const handleCloseError = useCallback(() => setShowError(false), []);
+  const showError = !!error && error !== dismissedError;
+  const handleCloseError = useCallback(() => setDismissedError(error), [error]);
 
   if (!result && !isLoading) {
     return (

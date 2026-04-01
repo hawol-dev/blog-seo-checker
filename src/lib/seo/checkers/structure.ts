@@ -12,9 +12,6 @@ const SHORT_PARAGRAPH_MAX_LINES = 4;
 const SHORT_PARAGRAPH_HIGH_RATIO = 0.7;
 const SHORT_PARAGRAPH_MID_RATIO = 0.5;
 
-// Pattern: line starting with ## or line that is entirely wrapped in **...**
-const SUBHEADING_PATTERN = /^(?:##\s|^\*\*.+\*\*$)/;
-
 function checkCharCount(content: string): CheckResult {
   const name = '글자수';
   const length = content.length;
