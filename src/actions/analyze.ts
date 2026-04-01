@@ -3,6 +3,7 @@
 import { analyze } from '@/lib/seo/analyzer';
 import { createClient } from '@/lib/supabase/server';
 import type { AnalyzeInput, AnalyzeResult } from '@/lib/seo/types';
+import { checkUsageLimit } from './usage';
 
 export async function analyzePost(input: AnalyzeInput): Promise<AnalyzeResult> {
   if (!input.title?.trim()) {
@@ -14,6 +15,8 @@ export async function analyzePost(input: AnalyzeInput): Promise<AnalyzeResult> {
   if (!input.content?.trim()) {
     throw new Error('본문 내용을 입력해주세요.');
   }
+
+  await checkUsageLimit();
 
   const result = analyze(input);
 
