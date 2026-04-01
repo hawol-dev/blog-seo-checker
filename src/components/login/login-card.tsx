@@ -15,7 +15,8 @@ export function LoginCard() {
 
   const handleNaverLogin = async () => {
     await supabase.auth.signInWithOAuth({
-      provider: 'naver' as 'google',
+      // Supabase supports Naver as a custom OIDC provider; type narrowing not available yet
+      provider: 'naver' as unknown as 'google',
       options: {
         redirectTo: window.location.origin + '/auth/callback',
       },
@@ -24,7 +25,8 @@ export function LoginCard() {
 
   const handleKakaoLogin = async () => {
     await supabase.auth.signInWithOAuth({
-      provider: 'kakao' as 'google',
+      // Supabase supports Kakao natively; type narrowing not available yet
+      provider: 'kakao' as unknown as 'google',
       options: {
         redirectTo: window.location.origin + '/auth/callback',
       },

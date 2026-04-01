@@ -48,8 +48,8 @@ export async function analyzePost(input: AnalyzeInput): Promise<AnalyzeResult> {
         result: result,
       });
     }
-  } catch {
-    // Silently fail — analysis result is still returned even if save fails
+  } catch (error) {
+    console.error('[analyzePost] Failed to save analysis:', error);
   }
 
   return result;
