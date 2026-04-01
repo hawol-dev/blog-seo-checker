@@ -27,6 +27,7 @@ export function InputPanel() {
         <Input
           id="title"
           placeholder="블로그 글 제목을 입력하세요"
+          maxLength={100}
           value={title}
           onChange={(e) => setField('title', e.target.value)}
           className="bg-elevated border-border text-text-primary placeholder:text-text-muted"
@@ -41,6 +42,7 @@ export function InputPanel() {
         <Input
           id="keyword"
           placeholder="상위노출을 원하는 키워드"
+          maxLength={50}
           value={keyword}
           onChange={(e) => setField('keyword', e.target.value)}
           className="bg-elevated border-border text-text-primary placeholder:text-text-muted focus-visible:border-accent focus-visible:ring-accent-glow"
@@ -60,6 +62,7 @@ export function InputPanel() {
         <Textarea
           id="content"
           placeholder="블로그 본문을 붙여넣기 하세요"
+          maxLength={50000}
           value={content}
           onChange={(e) => setField('content', e.target.value)}
           className="flex-1 min-h-0 resize-none overflow-y-auto bg-elevated border-border text-text-primary placeholder:text-text-muted !field-sizing-fixed"

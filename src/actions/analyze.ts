@@ -5,6 +5,10 @@ import { createClient } from '@/lib/supabase/server';
 import type { AnalyzeInput, AnalyzeResult } from '@/lib/seo/types';
 import { checkUsageLimit } from './usage';
 
+const MAX_TITLE_LENGTH = 100;
+const MAX_KEYWORD_LENGTH = 50;
+const MAX_CONTENT_LENGTH = 50_000;
+
 export async function analyzePost(input: AnalyzeInput): Promise<AnalyzeResult> {
   if (!input.title?.trim()) {
     throw new Error('제목을 입력해주세요.');
@@ -14,6 +18,15 @@ export async function analyzePost(input: AnalyzeInput): Promise<AnalyzeResult> {
   }
   if (!input.content?.trim()) {
     throw new Error('본문 내용을 입력해주세요.');
+  }
+  if (input.title.length > MAX_TITLE_LENGTH) {
+    throw new Error(`제목은 ${MAX_TITLE_LENGTH}자 이내로 입력해주세요.`);
+  }
+  if (input.keyword.length > MAX_KEYWORD_LENGTH) {
+    throw new Error(`키워드는 ${MAX_KEYWORD_LENGTH}자 이내로 입력해주세요.`);
+  }
+  if (input.content.length > MAX_CONTENT_LENGTH) {
+    throw new Error(`본문은 ${MAX_CONTENT_LENGTH.toLocaleString()}자 이내로 입력해주세요.`);
   }
 
   await checkUsageLimit();
